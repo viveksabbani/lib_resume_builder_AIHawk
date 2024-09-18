@@ -12,6 +12,7 @@ from langchain_core.prompt_values import StringPromptValue
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import ChatOpenAI
+from langchain_azure_openai  import AzureChatOpenAI
 from langchain_text_splitters import TokenTextSplitter
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -45,7 +46,7 @@ logger = logging.getLogger(__name__)
 
 class LLMLogger:
     
-    def __init__(self, llm: ChatOpenAI):
+    def __init__(self, llm: AzureChatOpenAI):
         self.llm = llm
 
     @staticmethod
@@ -103,7 +104,7 @@ class LLMLogger:
 
 class LoggerChatModel:
 
-    def __init__(self, llm: ChatOpenAI):
+    def __init__(self, llm: AzureChatOpenAI):
         self.llm = llm
 
 
@@ -162,10 +163,13 @@ class LoggerChatModel:
 
 
 class LLMResumer:
-    def __init__(self, openai_api_key, strings):
+    def __init__(self, openai_api_key,azure_openai_endpoint, azure_openai_deployment, strings):
         self.llm_cheap = LoggerChatModel(
-            ChatOpenAI(
-                model_name="gpt-4o-mini", openai_api_key=openai_api_key, temperature=0.4
+            AzureChatOpenAI(
+                openai_api_key=openai_api_key,  # Azure API key or Azure AD credential
+                api_base=azure_openai_endpoint,  # Azure OpenAI endpoint
+                deployment_name=azure_openai_deployment,  # Your deployment name in Azure OpenAI
+                temperature=0.4
             )
         )
         self.strings = strings

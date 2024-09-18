@@ -8,7 +8,7 @@ from lib_resume_builder_AIHawk.utils import HTML_to_PDF
 import webbrowser
 
 class FacadeManager:
-    def __init__(self, api_key, style_manager, resume_generator, resume_object, log_path):
+    def __init__(self, api_key, azure_openai_endpoint, azure_openai_deployment, style_manager, resume_generator, resume_object, log_path):
         # Ottieni il percorso assoluto della directory della libreria
         lib_directory = Path(__file__).resolve().parent
         global_config.STRINGS_MODULE_RESUME_PATH = lib_directory / "resume_prompt/strings_feder-cr.py"
@@ -17,6 +17,8 @@ class FacadeManager:
         global_config.STYLES_DIRECTORY = lib_directory / "resume_style"
         global_config.LOG_OUTPUT_FILE_PATH = log_path
         global_config.API_KEY = api_key
+        global_config.AZURE_OPENAI_ENDPOINT = azure_openai_endpoint
+        global_config.AZURE_OPENAI_DEPLOYMENT = azure_openai_deployment
         self.style_manager = style_manager
         self.style_manager.set_styles_directory(global_config.STYLES_DIRECTORY)
         self.resume_generator = resume_generator

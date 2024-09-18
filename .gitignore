@@ -10,3 +10,4 @@ resume.pdf
 data_folder
 generated_cv
 plain_text_resume*
+unit-test/yaml_example/secrets.yml
