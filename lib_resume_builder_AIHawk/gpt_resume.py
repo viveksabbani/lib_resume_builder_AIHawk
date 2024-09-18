@@ -165,9 +165,10 @@ class LoggerChatModel:
 
 
 class LLMResumer:
-    def __init__(self, openai_api_key,azure_openai_endpoint, azure_openai_deployment, strings):
+    def __init__(self, openai_api_key,azure_openai_endpoint, azure_openai_deployment, api_version, strings):
         self.llm_cheap = LoggerChatModel(
             AzureChatOpenAI(
+                api_version = api_version
                 openai_api_key=openai_api_key,  # Azure API key or Azure AD credential
                 api_base=azure_openai_endpoint,  # Azure OpenAI endpoint
                 deployment_name=azure_openai_deployment,  # Your deployment name in Azure OpenAI

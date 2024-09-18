@@ -11,6 +11,7 @@ class GlobalConfig:
         self.API_KEY: str = None
         self.AZURE_OPENAI_DEPLOYMENT: str = None
         self.AZURE_OPENAI_ENDPOINT: str = None
+        self.API_VERSION: str = None
         self.html_template = """
                             <!DOCTYPE html>
                             <html lang="en">
