@@ -12,7 +12,9 @@ from langchain_core.prompt_values import StringPromptValue
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 # from langchain_openai import ChatOpenAI
-from langchain_azure_openai  import AzureChatOpenAI
+# from langchain_azure_openai  import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI
+
 
 from langchain_text_splitters import TokenTextSplitter
 from langchain_community.embeddings import OpenAIEmbeddings
